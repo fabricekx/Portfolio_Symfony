@@ -1,4 +1,6 @@
-import './bootstrap.js';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.js';             // Importe le fichier de configuration bootstrap.js
+import './styles/app.scss';          // Importe les styles SCSS de l'application
+
 /*
  * Welcome to your app's main JavaScript file!
  *
