@@ -1,5 +1,4 @@
 // POUR DEFILEMENT MAIN
-import $ from 'jquery';  // Import jQuery
 
 import 'core-js/stable'; // Importer les polyfills nécessaires
 import 'regenerator-runtime/runtime'; // Polyfill pour async/await
@@ -64,4 +63,4 @@ function moveit(element, rayon, xcenter, ycenter, speed) {
 
 // moveit(element, rayon, xcenter, ycenter, speed)
 moveit($(".container1"), 150, 0, -200, 100);
-rotateImage($(".container2"), 15000)
+// rotateImage($(".container2"), 15000) // cette rotation est faite directement en css
