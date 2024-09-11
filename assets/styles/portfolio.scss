@@ -1,0 +1,91 @@
+/* Copier/Coller du projet Portfolio classique */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:wght@300;500&display=swap');
+
+:root {
+  --blanc : #fff;
+}
+
+/* NAVBAR */
+header {
+  z-index: 100;
+  position: relative;
+}
+nav ul li {
+    text-transform: uppercase;
+  }
+
+    /*  MAIN */
+
+    .back_img {
+      /* display: none; */
+    position: absolute;
+    top: 0vh;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    background: url(../images/galaxy.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    
+    }
+
+    .home {
+      display: flex;
+      /* display: none; */
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      font-family: "Roboto Condensed" sans-serif;
+      color: var(--blanc);
+    
+    }
+
+    /* containers des animations */
+  .container1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height : 200px;
+    /* border: 2px solid blue; */
+    text-align: center;
+}
+
+
+
+// animation en CSS, pour éviter celle en JS gourmande et hératique
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.container2 {
+  display: flex;
+  position: relative;
+
+  justify-content: center;
+  top : 25%;
+  width: 50%;
+  height : 30%;
+  /* border: 2px solid rgb(185, 18, 35); */
+  // transform: rotate(0deg)
+  animation: rotation 15s infinite linear; /* Changez la durée et le type d'animation selon vos besoins */
+
+}
