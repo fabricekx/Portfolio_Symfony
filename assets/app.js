@@ -5,7 +5,8 @@ import 'bootstrap'; // Simplifie l'import de Bootstrap grâce à webpack
 import $ from 'jquery';  // Import jQuery
 
 import './styles/app.scss';          // Importe les styles SCSS de l'application
-import './js/home.js'
+import './js/home.js';
+import './js/about.js';
 /*
  * Welcome to your app's main JavaScript file!
  *

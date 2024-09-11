@@ -48,6 +48,11 @@ nav ul li {
     
     }
 
+    // Footer
+    .footer {
+      color: var(--blanc);
+    }
+
     /* containers des animations */
   .container1 {
 
@@ -89,3 +94,81 @@ nav ul li {
   animation: rotation 15s infinite linear; /* Changez la durée et le type d'animation selon vos besoins */
 
 }
+
+/* ABOUT */
+.about {
+  display: inline-flex;
+  /* display: none; */
+  position: absolute;
+  top: 0vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: "Roboto Condensed" sans-serif;
+  color: var(--blanc);
+  
+  }
+  
+  
+  .info_container {
+    display: flex;
+    /* display: none; */
+    position: relative;
+    /* text-align: center; */
+    min-height: 20rem;
+    background-color: rgba(128, 128, 128, 0.535);
+    border: 1px gray solid;
+    border-radius: 0% 0% 10px 10px;;
+    align-items: center;
+    font-family: "Roboto Condensed" sans-serif;
+  
+  }
+  
+  #contact {
+    /* display : block; */
+    /* position: absolute; */
+    top: 15%;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+  .contact-hide {
+    display: none;
+  }
+  .p-hauteur { 
+    height: 200px;
+  }
+  .presentation {
+    display: block;
+  }
+  
+  .hard_skills {
+    display: none;
+  }
+  
+  .formation {
+    display: none;
+  }
+  
+  .experience {
+    display: none;
+  }
+  
+  .langues {
+    display: none;
+  }
+  
+  .soft_skills {
+    display: none;
+  }
+  
+  @media (max-width : 768px) {
+    .left_part {display: none}
+    .contact-hide {
+      display: block;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }}
+  

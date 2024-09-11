@@ -3,23 +3,46 @@
 import 'core-js/stable'; // Importer les polyfills nécessaires
 import 'regenerator-runtime/runtime'; // Polyfill pour async/await
 console.log('Home.js is loaded!');
+
+// L'utilisation de setTimeOut cause une désynchronisation lorsque l'onglet est inactif
+// Il vaut mieux utiliser requestAnimationFrame
+// let defile = $("#sousTitre").find(".fs-3");
+// let delais = 0;
+
+// function showText(time) {
+//     for (let i = 0; i < defile.length; i++) {
+
+
+//         setTimeout(function () { defile.eq(i).fadeToggle(time / 2); defile.eq(i).fadeToggle(time / 2) }, i * time);
+//         delais = defile.length * time;
+
+//     };
+//     // fonction récursive
+//     setTimeout(function () { showText(time * 2) }, delais);
+
+// };
+
 let defile = $("#sousTitre").find(".fs-3");
-let delais = 0;
+let index = 0; // Pour suivre l'index actuel
+let time = 1000; // Durée de l'animation pour chaque texte
 
-function showText(time) {
-    for (let i = 0; i < defile.length; i++) {
+function animateText() {
+    // Cacher tous les textes sauf celui à l'index courant
+    defile.hide();
+    defile.eq(index).fadeIn(time / 2, function () {
+        setTimeout(() => {
+            $(this).fadeOut(time / 2, function () {
+                // Incrémenter l'index pour passer au texte suivant
+                index = (index + 1) % defile.length; // Boucle sur le nombre de textes
+                animateText(); // Appel récursif
+            });
+        }, time); // Garder le texte visible avant de le cacher
+    });
+}
 
+// Démarrer l'animation
+requestAnimationFrame(animateText);
 
-        setTimeout(function () { defile.eq(i).fadeToggle(time / 2); defile.eq(i).fadeToggle(time / 2) }, i * time);
-        delais = defile.length * time;
-
-    };
-    // fonction récursive
-    setTimeout(function () { showText(time * 2) }, delais);
-
-};
-
-showText(1000);
 
 // Pour animation rotation
 let t = 0;
