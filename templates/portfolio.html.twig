@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to my Portfolio !
+{% endblock %}
+
+{% block body %}
+<!-- partie PORTFOLIO -->
+<div class="row container-fluid">
+
+    <div class="col-12 portfolio">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <h3>Jeu musical</h3>
+                    <img class="d-block w-100" src="{{ asset('images/batterie.jpg') }}" alt="batterie">
+                    <div class="carousel-caption d-md-block">
+                        <a class="btn-portfolio" href="https://fabricekx.github.io/Music-en-jquery/" target="_blank" rel="noreferrer noopener">VOIR</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>Calculatrice en JavaScript</h3>
+                    <img class="d-block w-100" src="{{ asset('images/calculatrice.jpg') }}" alt="calculatrice">
+                    <div class="carousel-caption d-md-block">
+                        <a class="btn-portfolio" href="https://fabricekx.github.io/Calculatrice/" target="_blank" rel="noreferrer noopener">VOIR</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>Maquette site de location</h3>
+                    <img class="d-block w-100" src="{{ asset('images/voiture.jpg') }}" alt="voiture">
+                    <div class="carousel-caption d-md-block">
+                        <a class="btn-portfolio" href="https://fabricekx.github.io/site-voiture/" target="_blank" rel="noreferrer noopener">VOIR</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <h3>Jeu Squid Game</h3>
+                    <img class="d-block w-100" src="{{ asset('images/squid.jpg') }}" alt="Squid Game">
+                    <div class="carousel-caption d-md-block">
+                        <a class="btn-portfolio" href="https://fabricekx.github.io/Squid-Game/" target="_blank" rel="noreferrer noopener">VOIR</a>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

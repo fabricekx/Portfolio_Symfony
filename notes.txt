@@ -1,1 +1,10 @@
 Utilise bootstrap5, attention, certaines classes ont changé de nom.
+
+Remarque: en jquery, plutôt que de faire une boucle sur les éléments d'une liste, 
+let progressBars = $("." + id_categories[i]).find(".progress-bar");
+        for (let k = 0; k < progressBars.length; k++) {}
+
+on peut utiliser la fonction each:
+  $(".progress-bar").each(function() {
+        // Récupérer la valeur cible de aria-valuenow du conteneur parent de la barre de progression
+        let targetWidth = $(this).closest('.progress').attr('aria-valuenow');})
