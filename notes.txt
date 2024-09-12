@@ -8,3 +8,9 @@ on peut utiliser la fonction each:
   $(".progress-bar").each(function() {
         // Récupérer la valeur cible de aria-valuenow du conteneur parent de la barre de progression
         let targetWidth = $(this).closest('.progress').attr('aria-valuenow');})
+
+
+MAIL_DEV: permet de tester l'envoi de mails.
+(nécessite évidement l'installation de mailer: composer require symfony/mailer	)
+L'installer: npm install -g maildev
+Le lancer: maildev -v --ip 127.0.0.1

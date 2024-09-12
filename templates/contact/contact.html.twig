@@ -1,0 +1,57 @@
+{# templates/contact/contact.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Me
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		<h1 class="mb-4 text-white pt-5">Contactez moi</h1>
+
+		{{ form_start(form, { 'attr': { 'class': 'needs-validation', 'novalidate': 'novalidate' } }) }}
+
+		<div class="mb-3">
+			{{ form_label(form.name, null, {'attr': {'class': 'form-label text-white'}}) }}
+			{{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+			<div class="text-danger">
+				{{ form_errors(form.name) }}
+			</div>
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(form.company, null, {'attr': {'class': 'form-label text-white'}}) }}
+			{{ form_widget(form.company, {'attr': {'class': 'form-control', 'placeholder': 'Votre entreprise (facultatif)'}}) }}
+			<div class="text-danger">
+				{{ form_errors(form.company) }}
+			</div>
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(form.email, null, {'attr': {'class': 'form-label text-white'}}) }}
+			{{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email'}}) }}
+			<div class="text-danger">
+                {{ form_errors(form.email) }}
+            </div>
+		</div>
+
+		<div class="mb-3">
+			{{ form_label(form.message, null, {'attr': {'class': 'form-label text-white'}}) }}
+			{{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre message', 'rows': 4}}) }}
+			<div class="text-danger">
+                {{ form_errors(form.message) }}
+            </div>
+		</div>
+
+
+		{{ form_end(form) }}
+	</div>
+
+	{% for message in app.flashes('success') %}
+		<div class="row justify-content-center">
+        <div class="col-6 d-flex  mt-3 alert alert-success">
+			{{ message }}
+		</div>
+        </div>
+	{% endfor %}
+{% endblock %}
