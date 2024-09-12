@@ -21,25 +21,47 @@ for (let i = 0; i < id_categories.length; i++) {
 
 
         // puis on cherche les progress bar dans la catégorie
-        let progress = $("." + id_categories[i]).find(".progress-bar");
-        for (let k = 0; k < progress.length; k++) {
-            let a = progress[k].style.width;
-            // console.log(a);
-            progress[k].animate(
-                { width: "10%" },
-                1000,
-                function () { console.log("essai") });
-            // console.log(a)
+        let progressBars = $("." + id_categories[i]).find(".progress-bar");
+        for (let k = 0; k < progressBars.length; k++) {
+            // Récupérer la valeur cible de aria-valuenow
+            // Récupérer la valeur cible de aria-valuenow du conteneur parent de la barre de progression
+            let $progressBar = $(progressBars[k]);
+            let targetWidth = $progressBar.closest('.progress').attr('aria-valuenow');
+            targetWidth = targetWidth ? targetWidth + '%' : '0%'; // Convertit en pourcentage ou initialise à 0% si non défini
+
+            console.log(targetWidth);
+            $progressBar.animate(
+                { width: targetWidth },
+                {
+                    duration: 1000, // Durée de l'animation en millisecondes
+                    easing: 'swing', // Optionnel : type d'animation
+                    step: function (now) {
+                        $(this).text(Math.ceil(now) + '%'); // Affiche le pourcentage pendant l'animation
+                    }
+                })
         }
-
-
-
-
 
 
     }
     )
 };
+
+// $(".progress-bar").each(function() {
+//     // Récupérer la valeur cible de aria-valuenow
+//     let targetWidth = $(this).parent().attr('aria-valuenow') + '%';
+
+//     // Animer la barre de progression de 0 à la valeur cible
+//     $(this).animate(
+//         { width: targetWidth },
+//         {
+//             duration: 1000, // Durée de l'animation en millisecondes
+//             easing: 'swing', // Optionnel : type d'animation
+//             step: function(now) {
+//                 $(this).text(Math.ceil(now) + '%'); // Affiche le pourcentage pendant l'animation
+//             }
+//         }
+//     );
+// });
 
 // let progress = $("#langues").find(".progress-bar");
 // a = progress[0].style.width;
