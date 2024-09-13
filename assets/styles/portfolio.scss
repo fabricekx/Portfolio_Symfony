@@ -40,12 +40,12 @@ nav ul li {
 
 /* Classe personnalisée pour le scintillement du bouton */
 .navbar-toggler.blinking-button {
-  animation: blink 0.8s 10;
+  animation: blink 0.8s 5;
 }
 
 /* Classe personnalisée pour le bouton */
 .navbar-toggler.animated-button {
-  animation: pulse 1.5s 3;
+  animation: pulse 1.5s 2;
 }
 
 
@@ -167,6 +167,12 @@ nav ul li {
     top: 15%;
     align-items: center;
     margin-bottom: 10%;
+  }
+
+  .contact-link {
+    text-decoration: none;
+    color: white;
+    animation: blink 1.5s infinite;
   }
 
 

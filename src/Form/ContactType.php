@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -63,13 +64,20 @@ class ContactType extends AbstractType
             'label_attr' => [
                 'class' => ' text-white'
             ]
-        ])
-        ->add('submit', SubmitType::class, [
-            'label' => 'Envoyer',
-            'attr' => [
-                'class' => 'btn btn-secondary'
-            ]
-        ]);
+            ])
+            ->add('consent', CheckboxType::class, [
+                'label' => 'J\'accepte la politique de confidentialité',
+                'mapped' => false, // Pour indiquer que ce champ ne correspond pas à une propriété de l'entité
+                'constraints' => [
+                    new Assert\IsTrue([
+                        'message' => 'Vous devez accepter notre politique de confidentialité pour continuer.',
+                    ]),
+                ],
+                'label_attr' => [
+                    'class' => ' text-white'
+                ]
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

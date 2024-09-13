@@ -7,33 +7,29 @@
 
 {% block body %}
 
-	<!-- Button trigger modal ;
-		Modal Bootstrap : Le modal est un composant de Bootstrap qui crée une fenêtre pop-up. 
-		Il est déclenché par le bouton avec data-bs-toggle="modal" et 
-		data-bs-target="#privacyPolicyModal", qui référence l'ID du modal.-->
 
-	<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">
-		Voir la politique de confidentialité
-	</button>
-
-	<!-- Modal -->
-	<div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="privacyPolicyModalLabel">Politique de Confidentialité</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p>Nous collectons des informations personnelles telles que votre adresse e-mail pour vous fournir notre service. Nous stockons ces informations de manière sécurisée et ne les partageons pas avec des tiers sans votre consentement...</p>
-					<!-- Ajoutez le texte complet de votre politique de confidentialité ici -->
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+	{# <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">
+			Voir la politique de confidentialité
+		</button>
+	
+		<!-- Modal -->
+		<div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="privacyPolicyModalLabel">Politique de Confidentialité</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Nous collectons des informations personnelles telles que votre adresse e-mail pour vous fournir notre service. Nous stockons ces informations de manière sécurisée et ne les partageons pas avec des tiers sans votre consentement...</p>
+						<!-- Ajoutez le texte complet de votre politique de confidentialité ici -->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		</div> #}
 
 
 	<div class="container my-5">
@@ -72,15 +68,43 @@
 				{{ form_errors(form.message) }}
 			</div>
 		</div>
-
 		<div class="form-check mb-3">
-			<input class="form-check-input" type="checkbox" id="consent" name="consent" required>
-			<label class="form-check-label text-white" for="consent">
+			{{ form_widget(form.consent, {'attr': {'class': 'form-check-input'}}) }}
+			<label class="form-check-label text-white" for="{{ form.consent.vars.id }}">
 				J'accepte la
-				<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">politique de confidentialité</button>.
+				<button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">politique de confidentialité</button>.
 			</label>
+			<div class="text-danger">
+				{{ form_errors(form.consent) }}
+			</div>
 		</div>
 
+		<!-- Modal de la Politique de Confidentialité -->
+		<!-- Button trigger modal ;
+					Modal Bootstrap : Le modal est un composant de Bootstrap qui crée une fenêtre pop-up. 
+					Il est déclenché par le bouton avec data-bs-toggle="modal" et 
+					data-bs-target="#privacyPolicyModal", qui référence l'ID du modal.-->
+		<div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="privacyPolicyModalLabel">Politique de Confidentialité</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div
+						class="modal-body">
+						<!-- Texte de votre politique de confidentialité -->
+						<p>Nous collectons des informations personnelles telles que votre adresse e-mail pour vous fournir notre service. Nous stockons ces informations de manière sécurisée et ne les partageons pas avec des tiers sans votre consentement...</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<button type="submit" class="btn btn-primary">Envoyer</button>
 		{{ form_end(form) }}
 	</div>
 

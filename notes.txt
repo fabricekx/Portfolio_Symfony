@@ -19,3 +19,6 @@ Le lancer: maildev -v --ip 127.0.0.1
 Responsive:
 Ne pas oublier de préciser dans la balise meta:
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+Modal: permet de faire apparaitre un popup avec bootstrap (voir formulaire de contact)
