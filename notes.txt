@@ -21,4 +21,9 @@ Ne pas oublier de préciser dans la balise meta:
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-Modal: permet de faire apparaitre un popup avec bootstrap (voir formulaire de contact)
+Modal: permet de faire apparaitre un popup avec bootstrap (voir formulaire de contact).
+
+Le cryptage des données (email), nécessite que le serveur dispose de l'extension serveur dispose de l'extension PHP OpenSSL
+Verifier que le ligne est décommentée dans php.ini
+Créer une clé de cryptage sécurisée, dans bash, en utilisant la commande: openssl rand -base64 32
+Et ajouter la variable de chiffrage dans .env: APP_ENCRYPTION_KEY=your_secure_random_key_here

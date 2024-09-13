@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactFormType;
 use App\Form\ContactType;
+use App\Service\EncryptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
+    private EncryptionService $encryptionService; //injection de dépendances
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EncryptionService $encryptionService, EntityManagerInterface $entityManager)
+    {
+        $this->encryptionService = $encryptionService;
+        $this->entityManager = $entityManager;
+    }
+
+
+
+
+
+
+
+
+
+
     #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager): Response
     {
@@ -31,7 +50,10 @@ class ContactController extends AbstractController
             $messageEntity = new Contact();
             $messageEntity->setName($contactData->getName());
             $messageEntity->setCompany($contactData->getCompany());
-            $messageEntity->setEmail($contactData->getEmail());
+            $email=$contactData->getEmail();
+            // Chiffrement de l'email
+        $encryptedEmail = $this->encryptionService->encrypt($email);
+            $messageEntity->setEmail($encryptedEmail);
             $messageEntity->setMessage($contactData->getMessage());
 
             // Persister l'entité dans la base de données
@@ -40,7 +62,7 @@ class ContactController extends AbstractController
 
             // Create the email to send to the admin
             $email = (new Email())
-                ->from($contactData->getEmail())
+                ->from($email)
                 ->to('admin@example.com') // Replace with your email
                 ->subject('New Contact Message')
                 ->text(
@@ -68,5 +90,20 @@ class ContactController extends AbstractController
         return $this->render('contact/contact.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/contact/get/{id}', name: 'contact_get')]
+    public function geContactById(int $id): Response
+    {
+        $user = $this->entityManager->getRepository(Contact::class)->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Utilisateur non trouvé.');
+        }
+
+        // Déchiffrement de l'email
+        $decryptedEmail = $this->encryptionService->decrypt($user->getEmail());
+
+        return new Response('Email de l\'utilisateur: ' . $decryptedEmail);
     }
 }
