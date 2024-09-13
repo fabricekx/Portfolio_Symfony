@@ -1,3 +1,7 @@
+console.log('About.js is loaded!');
+
+
+
 let id_categories = ["presentation", "hard_skills", "formation", "experience", "langues", "soft_skills"]
 
 // Onn cache toutes les catégories about sauf presentation qu'on montre
@@ -46,35 +50,8 @@ for (let i = 0; i < id_categories.length; i++) {
     )
 };
 
-// $(".progress-bar").each(function() {
-//     // Récupérer la valeur cible de aria-valuenow
-//     let targetWidth = $(this).parent().attr('aria-valuenow') + '%';
 
-//     // Animer la barre de progression de 0 à la valeur cible
-//     $(this).animate(
-//         { width: targetWidth },
-//         {
-//             duration: 1000, // Durée de l'animation en millisecondes
-//             easing: 'swing', // Optionnel : type d'animation
-//             step: function(now) {
-//                 $(this).text(Math.ceil(now) + '%'); // Affiche le pourcentage pendant l'animation
-//             }
-//         }
-//     );
-// });
 
-// let progress = $("#langues").find(".progress-bar");
-// a = progress[0].style.width;
-// progress[0].style.width = "10%"
-
-// progress[0].animate(
-//     {width :a},
-//     1000,
-//     function(){console.log("bonjour")}
-
-// )
-// console.log(a);
-// console.log(progress[0].style.width);
 
 
 

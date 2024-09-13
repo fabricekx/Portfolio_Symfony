@@ -14,3 +14,8 @@ MAIL_DEV: permet de tester l'envoi de mails.
 (nécessite évidement l'installation de mailer: composer require symfony/mailer	)
 L'installer: npm install -g maildev
 Le lancer: maildev -v --ip 127.0.0.1
+
+
+Responsive:
+Ne pas oublier de préciser dans la balise meta:
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
