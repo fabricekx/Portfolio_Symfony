@@ -6,15 +6,23 @@
 
     "build": "encore production",
 
-    "watch": "encore dev --watch"
+    "watch": "encore dev --watch",
+
+    "clean": "encore clean"
 
   },
 
   "dependencies": {
 
+    "@popperjs/core": "^2.11.8",
+
     "@symfony/webpack-encore": "^4.7.0",
 
     "bootstrap": "^5.3.3",
+
+    "core-js": "^3.38.1",
+
+    "jquery": "^3.7.1",
 
     "sass": "^1.78.0",
 

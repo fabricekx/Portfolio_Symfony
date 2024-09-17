@@ -8,11 +8,24 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route('/', name: 'app_default')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        return $this->render('base.html.twig', [
-            'controller_name' => 'DefaultController',
+        return $this->render('home.html.twig', [
         ]);
     }
+
+    #[Route('/about', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('about.html.twig');
+    }
+
+    #[Route('/portfolio', name: 'app_portfolio')]
+    public function portfolio(): Response
+    {
+        return $this->render('portfolio.html.twig');
+    }
+
+    
 }

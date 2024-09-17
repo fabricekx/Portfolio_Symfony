@@ -1,0 +1,252 @@
+/* Copier/Coller du projet Portfolio classique */
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Condensed:wght@300;500&display=swap');
+
+:root {
+  --blanc : #fff;
+}
+
+/* NAVBAR */
+header {
+  z-index: 100;
+  position: relative;
+}
+nav ul li {
+    text-transform: uppercase;
+  }
+
+  /* Animation de pulsation */
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.3);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Animation de scintillement */
+@keyframes blink {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.3;
+  }
+}
+
+/* Classe personnalisée pour le scintillement du bouton */
+.navbar-toggler.blinking-button {
+  animation: blink 0.8s 5;
+}
+
+/* Classe personnalisée pour le bouton */
+.navbar-toggler.animated-button {
+  animation: pulse 1.5s 2;
+}
+
+
+    /*  MAIN */
+
+    .back_img {
+      /* display: none; */
+    position: absolute;
+    top: 0vh;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    background: url(../images/galaxy.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    
+    }
+
+    .home {
+      display: flex;
+      /* display: none; */
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      font-family: "Roboto Condensed" sans-serif;
+      color: var(--blanc);
+    
+    }
+
+    // Footer
+    .footer {
+      color: var(--blanc);
+    }
+
+    /* containers des animations */
+  .container1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height : 200px;
+    /* border: 2px solid blue; */
+    text-align: center;
+}
+
+
+
+// animation en CSS, pour éviter celle en JS gourmande et hératique
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.container2 {
+  display: flex;
+  position: relative;
+
+  justify-content: center;
+  top : 25%;
+  width: 50%;
+  height : 30%;
+  /* border: 2px solid rgb(185, 18, 35); */
+  // transform: rotate(0deg)
+  animation: rotation 15s infinite linear; /* Changez la durée et le type d'animation selon vos besoins */
+
+}
+
+/* ABOUT */
+.about {
+  display: inline-flex;
+  /* display: none; */
+  position: absolute;
+  top: 0vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: "Roboto Condensed" sans-serif;
+  color: var(--blanc);
+  
+  }
+  
+  
+  .info_container {
+    display: flex;
+    /* display: none; */
+    position: relative;
+    /* text-align: center; */
+    min-height: 20rem;
+    background-color: rgba(128, 128, 128, 0.535);
+    border: 1px gray solid;
+    border-radius: 0% 0% 10px 10px;;
+    align-items: center;
+    font-family: "Roboto Condensed" sans-serif;
+  
+  }
+  
+  #contact {
+    /* display : block; */
+    /* position: absolute; */
+    top: 15%;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+
+  .contact-link {
+    text-decoration: none;
+    color: white;
+    animation: blink 1.5s infinite;
+  }
+
+
+  .contact-hide {
+    display: none;
+  }
+  .p-hauteur { 
+    height: 200px;
+  }
+  .presentation {
+    display: block;
+  }
+  
+  .hard_skills {
+    display: none;
+  }
+  
+  .formation {
+    display: none;
+  }
+  
+  .experience {
+    display: none;
+  }
+  
+  .langues {
+    display: none;
+  }
+  
+  .soft_skills {
+    display: none;
+  }
+  
+  @media (max-width : 768px) {
+    .left_part {display: none}
+    .contact-hide {
+      display: block;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }}
+  
+    /* PORTFOLIO */
+
+  .portfolio {
+    display: inline-flex;
+    /* display: none; */
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family: "Roboto Condensed" sans-serif;
+    height: 100vh;
+    color: var(--blanc);
+ }
+
+ .carousel {
+   width:640px;
+   height:360px;
+ }
+
+ .btn-portfolio {
+   background-color: #f4511e;
+   border: none;
+   color: white;
+   padding: 16px 32px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 1rem;
+   margin: 4px 2px;
+   opacity: 0.6;
+   border-radius: 1rem;
+   transition: 0.3s;
+ }
+
+ .btn-portfolio:hover {
+   opacity: 1;
+ }
