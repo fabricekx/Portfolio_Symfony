@@ -27,5 +27,10 @@ class DefaultController extends AbstractController
         return $this->render('portfolio.html.twig');
     }
 
-    
+    #[Route('/underConstruction', name: 'app_construction')]
+    public function underConstruction(): Response
+    {
+        return $this->render('underConstruction.html.twig');
+
+    }
 }
