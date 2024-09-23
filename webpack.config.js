@@ -10,7 +10,10 @@ Encore
     .setManifestKeyPrefix('build/')
 
     .addEntry('app', './assets/app.js')
-
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]'
+    })
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
