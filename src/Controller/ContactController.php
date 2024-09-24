@@ -63,7 +63,7 @@ class ContactController extends AbstractController
             // Create the email to send to the admin
             $email = (new Email())
                 ->from($email)
-                ->to('admin@example.com') // Replace with your email
+                ->to('hendrikx@fabricehendrikx.fr') // Replace with your email
                 ->subject('New Contact Message')
                 ->text(
                     "Name: " . $contactData->getName() . "\n" .
@@ -75,7 +75,7 @@ class ContactController extends AbstractController
 
             // Create the auto-reply email
             $replyEmail = (new Email())
-                ->from('noreply@example.com') // Replace with your no-reply email
+                ->from('hendrikx@fabricehendrikx.fr') // Replace with your no-reply email
                 ->to($contactData->getEmail())
                 ->subject('Thank you for your message')
                 ->text('Thank you for contacting us. We will get back to you shortly.');
