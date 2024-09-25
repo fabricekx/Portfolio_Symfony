@@ -11,27 +11,16 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <h3>Jeu musical</h3>
-                    <img class="d-block w-100" src="{{ asset('build/images/batterie.jpg') }}" alt="batterie">
-                    <div class="carousel-caption d-md-block">
-                        <a class="btn-portfolio" href="https://fabricekx.github.io/Music-en-jquery/" target="_blank" rel="noreferrer noopener">VOIR</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <h3>Calculatrice en JavaScript</h3>
-                    <img class="d-block w-100" src="{{ asset('build/images/calculatrice.jpg') }}" alt="calculatrice">
-                    <div class="carousel-caption d-md-block">
-                        <a class="btn-portfolio" href="https://fabricekx.github.io/Calculatrice/" target="_blank" rel="noreferrer noopener">VOIR</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <h3>Maquette site de location</h3>
-                    <img class="d-block w-100" src="{{ asset('build/images/voiture.jpg') }}" alt="voiture">
-                    <div class="carousel-caption d-md-block">
-                        <a class="btn-portfolio" href="https://fabricekx.github.io/site-voiture/" target="_blank" rel="noreferrer noopener">VOIR</a>
-                    </div>
-                </div>
+            {# boucle dynamique sauf pour squid game en attente #}
+                {% for projet in projets %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <h3>{{ projet.title }}</h3>
+            <img class="d-block w-100" src="{{ asset('build/images/' ~ projet.image) }}" alt="{{ projet.title }}">
+            <div class="carousel-caption d-md-block">
+                <a class="btn-portfolio" href="{{ projet.link }}" target="_blank" rel="noreferrer noopener">VOIR</a>
+            </div>
+        </div>
+    {% endfor %}
                 <div class="carousel-item">
                     <h3>Jeu Squid Game</h3>
                     <img class="d-block w-100" src="{{ asset('build/images/squid.jpg') }}" alt="Squid Game">
