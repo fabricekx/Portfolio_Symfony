@@ -77,12 +77,13 @@ class ContactController extends AbstractController
             $replyEmail = (new Email())
                 ->from('hendrikx@fabricehendrikx.fr') // Replace with your no-reply email
                 ->to($contactData->getEmail())
-                ->subject('Thank you for your message')
-                ->text('Thank you for contacting us. We will get back to you shortly.');
+                ->subject('Merci pour votre message')
+                ->text('Thank you for contacting us. We will get back to you shortly. 
+                Merci de nous avoir contacté. Nous vous réponderons rapidement');
 
             $mailer->send($replyEmail);
 
-            $this->addFlash('success', 'Your message has been sent.');
+            $this->addFlash('success', 'Votre message a été envoyé, merci');
 
             return $this->redirectToRoute('app_contact');
         }
