@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserRegistrationFormType;
+use App\Form\RegistrationForm;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,19 +21,20 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response {
         $user = new User();
-        $form = $this->createForm(UserRegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationForm::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Hacher le mot de passe
+
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
                 $form->get('plainPassword')->getData()
             );
             $user->setPassword($hashedPassword);
-
+            // dd($user);
             // Assigner un rôle admin, si nécessaire
-            // $user->setRoles(['ROLE_ADMIN']);
+            $user->setRoles(['ROLE_ADMIN']);
 
             // Sauvegarder l'utilisateur en base de données
             $entityManager->persist($user);

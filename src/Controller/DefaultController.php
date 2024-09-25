@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Projet;
+use App\Repository\ProjetRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -22,9 +25,12 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/portfolio', name: 'app_portfolio')]
-    public function portfolio(): Response
+    public function portfolio(ProjetRepository $projetRepository): Response
     {
-        return $this->render('portfolio.html.twig');
+        $projets=$projetRepository->findAll();
+
+
+        return $this->render('portfolio.html.twig', ['projets' => $projets]);
     }
 
     #[Route('/underConstruction', name: 'app_construction')]
