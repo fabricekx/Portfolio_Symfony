@@ -92,7 +92,7 @@ class ContactController extends AbstractController
             }
             catch (TransportExceptionInterface $e) {
                 // Log the error to a file or monitoring system
-                $this->addFlash('error', 'Désolé, nous avons rencontré un problème lors de l\'envoi de votre message. Le message a tout de même été enregistré et nous vous répondrons dès que possible.');
+                $this->addFlash('danger', 'Désolé, nous avons rencontré un problème lors de l\'envoi de votre message. Le message a tout de même été enregistré et nous vous répondrons dès que possible.');
                 // Si tu veux un debug rapide, tu peux aussi logger ceci : $e->getMessage();
             }
             return $this->redirectToRoute('app_contact');
