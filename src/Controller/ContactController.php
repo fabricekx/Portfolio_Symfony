@@ -51,7 +51,7 @@ class ContactController extends AbstractController
             $messageEntity = new Contact();
             $messageEntity->setName($contactData->getName());
             $messageEntity->setCompany($contactData->getCompany());
-            $messageEntity->setDate(new \DateTime('now'));
+            $messageEntity->setDate(new \DateTime());
 
             $email=$contactData->getEmail();
             // Chiffrement de l'email
