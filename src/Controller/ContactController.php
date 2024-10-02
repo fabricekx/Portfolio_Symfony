@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +51,8 @@ class ContactController extends AbstractController
             $messageEntity = new Contact();
             $messageEntity->setName($contactData->getName());
             $messageEntity->setCompany($contactData->getCompany());
+            $messageEntity->setDate(new \DateTime('now'));
+
             $email=$contactData->getEmail();
             // Chiffrement de l'email
         $encryptedEmail = $this->encryptionService->encrypt($email);
@@ -71,7 +74,9 @@ class ContactController extends AbstractController
                     "Message: " . $contactData->getMessage()
                 );
 
-            $mailer->send($email);
+            
+            try {
+                $mailer->send($email);
 
             // Create the auto-reply email
             $replyEmail = (new Email())
@@ -84,7 +89,12 @@ class ContactController extends AbstractController
             $mailer->send($replyEmail);
 
             $this->addFlash('success', 'Votre message a été envoyé, merci');
-
+            }
+            catch (TransportExceptionInterface $e) {
+                // Log the error to a file or monitoring system
+                $this->addFlash('error', 'Désolé, nous avons rencontré un problème lors de l\'envoi de votre message. Le message a tout de même été enregistré et nous vous répondrons dès que possible.');
+                // Si tu veux un debug rapide, tu peux aussi logger ceci : $e->getMessage();
+            }
             return $this->redirectToRoute('app_contact');
         }
 
