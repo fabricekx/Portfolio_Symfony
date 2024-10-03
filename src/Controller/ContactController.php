@@ -8,6 +8,7 @@ use App\Form\ContactFormType;
 use App\Form\ContactType;
 use App\Service\EncryptionService;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,10 +22,11 @@ class ContactController extends AbstractController
     private EncryptionService $encryptionService; //injection de dépendances
     private EntityManagerInterface $entityManager;
 
-    public function __construct(EncryptionService $encryptionService, EntityManagerInterface $entityManager)
+    public function __construct(EncryptionService $encryptionService, EntityManagerInterface $entityManager, LoggerInterface $logger)
     {
         $this->encryptionService = $encryptionService;
         $this->entityManager = $entityManager;
+        $this->logger = $logger;
     }
 
 
@@ -37,7 +39,7 @@ class ContactController extends AbstractController
 
 
     #[Route('/contact', name: 'app_contact')]
-    public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager): Response
+    public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager, LoggerInterface $logger): Response
     {
         $form = $this->createForm(ContactType::class);
 
@@ -94,6 +96,8 @@ class ContactController extends AbstractController
                 // Log the error to a file or monitoring system
                 $this->addFlash('danger', 'Désolé, nous avons rencontré un problème lors de l\'envoi de votre message. Le message a tout de même été enregistré et nous vous répondrons dès que possible.');
                 // Si tu veux un debug rapide, tu peux aussi logger ceci : $e->getMessage();
+                $logger->error('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage());
+
             }
             return $this->redirectToRoute('app_contact');
         }
