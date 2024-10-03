@@ -21,6 +21,7 @@ class ContactController extends AbstractController
 {
     private EncryptionService $encryptionService; //injection de dépendances
     private EntityManagerInterface $entityManager;
+    private LoggerInterface $logger; // Ajout de la propriété pour le logger
 
     public function __construct(EncryptionService $encryptionService, EntityManagerInterface $entityManager, LoggerInterface $logger)
     {
@@ -39,7 +40,7 @@ class ContactController extends AbstractController
 
 
     #[Route('/contact', name: 'app_contact')]
-    public function contact(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager, LoggerInterface $logger): Response
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
         $form = $this->createForm(ContactType::class);
 
@@ -62,8 +63,8 @@ class ContactController extends AbstractController
             $messageEntity->setMessage($contactData->getMessage());
 
             // Persister l'entité dans la base de données
-            $entityManager->persist($messageEntity);
-            $entityManager->flush();
+            $this->entityManager->persist($messageEntity);
+            $this->entityManager->flush();
 
             // Create the email to send to the admin
             $email = (new Email())
@@ -94,9 +95,10 @@ class ContactController extends AbstractController
             }
             catch (TransportExceptionInterface $e) {
                 // Log the error to a file or monitoring system
+                $this->logger->error('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage());
+
                 $this->addFlash('danger', 'Désolé, nous avons rencontré un problème lors de l\'envoi de votre message. Le message a tout de même été enregistré et nous vous répondrons dès que possible.');
                 // Si tu veux un debug rapide, tu peux aussi logger ceci : $e->getMessage();
-                $logger->error('Erreur lors de l\'envoi de l\'email : ' . $e->getMessage());
 
             }
             return $this->redirectToRoute('app_contact');
