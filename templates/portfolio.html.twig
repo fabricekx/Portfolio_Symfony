@@ -15,7 +15,7 @@
                 {% for projet in projets %}
         <div class="carousel-item {% if loop.first %}active{% endif %}">
             <h3>{{ projet.title }}</h3>
-            <img class="d-block w-100" src="{{ asset('build/images/' ~ projet.image) }}" alt="{{ projet.title }}">
+            <img class="d-block w-100" src="{{ asset('uploads/images/' ~ projet.image) }}" alt="{{ projet.title }}">
             <div class="carousel-caption d-md-block">
                 <a class="btn-portfolio" href="{{ projet.link }}" target="_blank" rel="noreferrer noopener">VOIR</a>
             </div>
