@@ -16,6 +16,13 @@ a:hover {
 header {
   z-index: 100;
   position: relative;
+  height: 5vh
+}
+
+.carousel-item h3 {
+  color: white !important;
+  z-index: 10; /* S'assurer que le texte passe au-dessus de l'image */
+  position: relative; /* Au cas où Bootstrap le place différemment */
 }
 nav ul li {
     text-transform: uppercase;
@@ -68,7 +75,7 @@ nav ul li {
     // background-color: #f4511e;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 90vh;
     
     }
 
@@ -92,6 +99,8 @@ nav ul li {
     // Footer
     .footer {
       color: var(--blanc);
+      height: 5vh;
+      background-color: rgb(29, 28, 28);
     }
 
     /* containers des animations */
@@ -239,6 +248,31 @@ nav ul li {
    width:640px;
    height:360px;
  }
+
+//  pour centrer les flèches sur les images
+ .carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto;
+  width: 5%; /* Ajuste si besoin */
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%); /* Rendre les flèches visibles sur fond sombre */
+    width: 30px; /* Taille des icônes */
+    height: 30px;
+  }
+
+  .carousel-inner {
+    padding-top: 20px; /* Remplace mt-5 */
+    padding-bottom: 20px; /* Remplace mb-5 */
+}
+
+.carousel-item {
+    text-align: center; /* S'assure que le contenu reste centré */
+}
 
  .btn-portfolio {
    background-color: #f4511e;
