@@ -1,37 +1,31 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{% block title %}Welcome!{% endblock %}</title>
-		<link rel="icon" href="{{ asset('build/images/portfolio-logo.svg') }}">
-		
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('build/images/portfolio-logo.svg') }}">
 
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		{% include 'nav.html.twig' %}
-<!-- MAIN -->
-		<main
-			class="flex flex-column align-center padding back_img">
-		{% block body %}
-					class="flex flex-column align-center padding back_img">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+    {% include 'nav.html.twig' %}
 
-        	{# //insérer le code ici #}
-
-
+    <!-- MAIN -->
+    <main class="flex flex-column align-center padding back_img">
+        {% block body %}
+            {# // Insérer le code ici #}
         {% endblock %}
-</main
-		{% include 'footer.html.twig' %}
-		
-		{# Déplacez le bloc javascripts ici #}
-		{% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
-		{% endblock %}
-	</body>
+    </main>
+
+    {% include 'footer.html.twig' %}
+
+    {# Déplacez le bloc javascripts ici #}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ importmap('app') }}
+    {% endblock %}
+</body>
 </html>
